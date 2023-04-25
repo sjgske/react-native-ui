@@ -1,6 +1,6 @@
 import { SafeAreaView, Text } from 'react-native';
 
-const Home = () => {
+const DetailsScreen = () => {
   return (
     <SafeAreaView>
       <Text>Home</Text>
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DetailsScreen;
