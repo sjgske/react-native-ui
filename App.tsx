@@ -5,11 +5,11 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './src/screens/HomeScreen';
-import DetailsScreen from './src/screens/DetailsScreen';
-import CartScreen from './src/screens/CartScreen';
-import PaymentScreen from './src/screens/PaymentScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
+import HomeScreen from 'screens/HomeScreen';
+import DetailsScreen from 'screens/DetailsScreen';
+import CartScreen from 'screens/CartScreen';
+import PaymentScreen from 'screens/PaymentScreen';
+import ProfileScreen from 'screens/ProfileScreen';
 import Icons from '@expo/vector-icons/MaterialIcons';
 import { useMemo } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';

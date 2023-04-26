@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react';
 import { BottomSheetBackdropProps } from '@gorhom/bottom-sheet';
 import Animated, {
   Extrapolate,
