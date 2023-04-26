@@ -10,12 +10,13 @@ import {
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import Icons from '@expo/vector-icons/MaterialIcons';
-import Card from '../components/Card';
 import { useRef, useState, useCallback } from 'react';
 import MasonryList from 'reanimated-masonry-list';
 import { BlurView } from 'expo-blur';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
-import CustomBackdrop from '../components/CustomBackdrop';
+import Card from 'components/Card';
+import CustomBackdrop from 'components/CustomBackdrop';
+import FilterView from 'components/FilterView';
 
 const CATEGORIES = ['Clothing', 'Shoes', 'Accessories', 'Bags', 'Perfumes'];
 
@@ -293,14 +294,14 @@ const HomeScreen = () => {
         />
       </SafeAreaView>
 
-      {/* BottomSheet */}
+      {/* BottomSheet Modal */}
       <BottomSheetModal
         ref={bottomSheetModalRef}
         snapPoints={['80%']}
         index={0}
         backdropComponent={props => <CustomBackdrop {...props} />}
       >
-        <Text>Modal</Text>
+        <FilterView />
       </BottomSheetModal>
     </ScrollView>
   );
