@@ -215,7 +215,13 @@ const HomeScreen = () => {
                 }}
               />
               <View style={[StyleSheet.absoluteFill, { padding: 12 }]}>
-                <View style={{ flexDirection: 'row', padding: 16 }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    paddingHorizontal: 8,
+                    paddingTop: 8,
+                  }}
+                >
                   <Text
                     style={{
                       flex: 1,
@@ -246,39 +252,40 @@ const HomeScreen = () => {
                 </View>
                 <View style={{ flex: 1 }}></View>
                 {/* ↑ flex 간격 */}
-                <BlurView
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(0,0,0,0.5)',
-                    borderRadius: 100,
-                    paddingVertical: 10,
-                    paddingHorizontal: 12,
-                  }}
-                  intensity={20}
-                >
-                  <Text
+                <View style={{ overflow: 'hidden', borderRadius: 100 }}>
+                  <BlurView
                     style={{
-                      flex: 1,
-                      fontSize: 16,
-                      fontWeight: '600',
-                      color: 'white',
-                      marginLeft: 8,
-                    }}
-                  >
-                    160.00
-                  </Text>
-                  <TouchableOpacity
-                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      backgroundColor: 'rgba(0,0,0,0.5)',
+                      paddingVertical: 10,
                       paddingHorizontal: 12,
-                      paddingVertical: 8,
-                      borderRadius: 100,
-                      backgroundColor: 'white',
                     }}
+                    intensity={20}
                   >
-                    <Icons name="add-shopping-cart" size={20} color="#000" />
-                  </TouchableOpacity>
-                </BlurView>
+                    <Text
+                      style={{
+                        flex: 1,
+                        fontSize: 16,
+                        fontWeight: '600',
+                        color: 'white',
+                        marginLeft: 8,
+                      }}
+                    >
+                      160.00
+                    </Text>
+                    <TouchableOpacity
+                      style={{
+                        paddingHorizontal: 12,
+                        paddingVertical: 8,
+                        borderRadius: 100,
+                        backgroundColor: 'white',
+                      }}
+                    >
+                      <Icons name="add-shopping-cart" size={20} color="#000" />
+                    </TouchableOpacity>
+                  </BlurView>
+                </View>
               </View>
             </View>
           )}
@@ -289,7 +296,7 @@ const HomeScreen = () => {
       {/* BottomSheet */}
       <BottomSheetModal
         ref={bottomSheetModalRef}
-        snapPoints={['75%']}
+        snapPoints={['80%']}
         index={0}
         backdropComponent={props => <CustomBackdrop {...props} />}
       >
