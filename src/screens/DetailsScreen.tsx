@@ -1,9 +1,15 @@
+import { RootStackScreenProps } from 'navigators/RootStackNavigator';
 import { SafeAreaView, Text } from 'react-native';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({
+  navigation,
+  route: {
+    params: { id },
+  },
+}: RootStackScreenProps<'Details'>) => {
   return (
     <SafeAreaView>
-      <Text>Home</Text>
+      <Text>ID: {id}</Text>
     </SafeAreaView>
   );
 };

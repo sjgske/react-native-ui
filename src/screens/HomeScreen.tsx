@@ -17,10 +17,44 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import Card from 'components/Card';
 import CustomBackdrop from 'components/CustomBackdrop';
 import FilterView from 'components/FilterView';
+import { TabsStackScreenProps } from 'navigators/TabNavigator';
 
 const CATEGORIES = ['Clothing', 'Shoes', 'Accessories', 'Bags', 'Perfumes'];
 
-const HomeScreen = () => {
+const MASONRY_LIST_DATA = [
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1521577352947-9bb58764b69a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=986&q=80',
+    title: 'PUMA Everyday Hussle',
+    price: 160,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
+    title: 'PUMA Everyday Hussle',
+    price: 180,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1556217477-d325251ece38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1020&q=80',
+    title: 'PUMA Everyday Hussle',
+    price: 200,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
+    title: 'PUMA Everyday Hussle',
+    price: 180,
+  },
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1627225924765-552d49cf47ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
+    title: 'PUMA Everyday Hussle',
+    price: 120,
+  },
+];
+
+const HomeScreen = ({ navigation }: TabsStackScreenProps<'Home'>) => {
   const { colors } = useTheme();
   const [categoryIndex, setCategoryIndex] = useState(0);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -148,11 +182,23 @@ const HomeScreen = () => {
           {/* Card */}
           <View style={{ flexDirection: 'row', height: 200, gap: 12 }}>
             <View style={{ flex: 1 }}>
-              <Card />
+              <Card
+                onPress={() => navigation.navigate('Details', { id: '123' })}
+                price={130}
+                imageUrl="https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+              />
             </View>
             <View style={{ flex: 1, gap: 12 }}>
-              <Card />
-              <Card />
+              <Card
+                onPress={() => navigation.navigate('Details', { id: '456' })}
+                price={120}
+                imageUrl="https://images.unsplash.com/photo-1571945153237-4929e783af4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+              />
+              <Card
+                onPress={() => navigation.navigate('Details', { id: '789' })}
+                price={170}
+                imageUrl="https://images.unsplash.com/photo-1485218126466-34e6392ec754?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2342&q=80"
+              />
             </View>
           </View>
         </View>
@@ -194,11 +240,11 @@ const HomeScreen = () => {
 
         {/* Masonry */}
         <MasonryList
-          data={[1, 2, 3, 4, 5]}
+          data={MASONRY_LIST_DATA}
           numColumns={2}
           contentContainerStyle={{ paddingHorizontal: 20, marginLeft: 4 }}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item, i }) => (
+          renderItem={({ item, i }: { item: any; i: number }) => (
             <View
               style={{
                 flex: 1,
@@ -209,13 +255,11 @@ const HomeScreen = () => {
               }}
             >
               <Image
-                style={[
-                  StyleSheet.absoluteFill,
-                  { width: '100%', height: '100%' },
-                ]}
+                style={StyleSheet.absoluteFill}
                 source={{
-                  uri: 'https://i.pinimg.com/236x/00/f4/4a/00f44a799775319a3ee841d61d9f5fc7.jpg',
+                  uri: item.imageUrl,
                 }}
+                resizeMode="cover"
               />
               <View style={[StyleSheet.absoluteFill, { padding: 12 }]}>
                 <View
@@ -231,9 +275,15 @@ const HomeScreen = () => {
                       fontSize: 16,
                       fontWeight: '600',
                       color: '#000',
+                      textShadowColor: 'rgba(0,0,0,0.2)',
+                      textShadowOffset: {
+                        height: 1,
+                        width: 0,
+                      },
+                      textShadowRadius: 4,
                     }}
                   >
-                    PUMA Everyday Hussle
+                    {item.title}
                   </Text>
                   <View
                     style={{
@@ -275,7 +325,7 @@ const HomeScreen = () => {
                         marginLeft: 8,
                       }}
                     >
-                      160.00
+                      {item.price}.00
                     </Text>
                     <TouchableOpacity
                       style={{

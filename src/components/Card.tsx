@@ -1,8 +1,15 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 
-const Card = () => {
+interface Props {
+  price: number;
+  imageUrl: string;
+  onPress: () => void;
+}
+
+const Card = ({ price, imageUrl, onPress }: Props) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={{
         flex: 1,
         height: 200,
@@ -13,7 +20,7 @@ const Card = () => {
       <Image
         style={{ width: '100%', height: '100%' }}
         source={{
-          uri: 'https://i.pinimg.com/236x/24/e8/01/24e80139cf644bb0801418caf8acb0b1.jpg',
+          uri: imageUrl,
         }}
         resizeMode="cover"
       />
@@ -29,10 +36,10 @@ const Card = () => {
         }}
       >
         <Text style={{ fontSize: 14, fontWeight: '600', color: '#fff' }}>
-          ♥︎ 130
+          $ {price}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
