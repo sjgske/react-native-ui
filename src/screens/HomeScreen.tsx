@@ -121,7 +121,7 @@ const HomeScreen = () => {
               backgroundColor: colors.primary,
             }}
           >
-            <Icons name="tune" size={24} color={'white'} />
+            <Icons name="tune" size={24} color={colors.background} />
           </TouchableOpacity>
         </View>
 
@@ -135,11 +135,13 @@ const HomeScreen = () => {
               justifyContent: 'space-between',
             }}
           >
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
+            <Text
+              style={{ fontSize: 22, fontWeight: '700', color: colors.text }}
+            >
               New Collections
             </Text>
             <TouchableOpacity>
-              <Text>See All</Text>
+              <Text style={{ color: colors.text }}>See All</Text>
             </TouchableOpacity>
           </View>
 
@@ -228,7 +230,7 @@ const HomeScreen = () => {
                       flex: 1,
                       fontSize: 16,
                       fontWeight: '600',
-                      color: colors.text,
+                      color: '#000',
                     }}
                   >
                     PUMA Everyday Hussle

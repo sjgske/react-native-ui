@@ -26,6 +26,7 @@ const CustomBottomTabs = (props: BottomTabBarProps) => {
                 flexDirection: 'row',
                 paddingVertical: 8,
                 paddingHorizontal: 24,
+                gap: 4,
               }}
             >
               <View
@@ -49,7 +50,7 @@ const CustomBottomTabs = (props: BottomTabBarProps) => {
                       : 'person'
                   }
                   size={24}
-                  color={isActive ? '#fff' : colors.text}
+                  color={isActive ? colors.card : colors.text}
                   style={{
                     opacity: isActive ? 1 : 0.5,
                   }}
@@ -57,7 +58,12 @@ const CustomBottomTabs = (props: BottomTabBarProps) => {
               </View>
               {isActive && (
                 <Text
-                  style={{ marginLeft: 4, fontSize: 12, fontWeight: '600' }}
+                  style={{
+                    marginLeft: 4,
+                    fontSize: 12,
+                    fontWeight: '600',
+                    color: colors.text,
+                  }}
                 >
                   {route.name}
                 </Text>
