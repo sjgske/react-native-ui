@@ -3,57 +3,13 @@ import {
   NavigationContainer,
   Theme,
 } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from 'screens/HomeScreen';
-import DetailsScreen from 'screens/DetailsScreen';
-import CartScreen from 'screens/CartScreen';
-import PaymentScreen from 'screens/PaymentScreen';
-import ProfileScreen from 'screens/ProfileScreen';
-import Icons from '@expo/vector-icons/MaterialIcons';
 import { useMemo } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-const TabNavigator = () => {
-  const Tab = createBottomTabNavigator();
-  return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ tabBarIcon: props => <Icons name="home" {...props} /> }}
-      />
-      <Tab.Screen
-        name="Cart"
-        component={CartScreen}
-        options={{
-          tabBarIcon: props => <Icons name="shopping-cart" {...props} />,
-        }}
-      />
-      <Tab.Screen
-        name="Payment"
-        component={PaymentScreen}
-        options={{
-          tabBarIcon: props => (
-            <Icons name="account-balance-wallet" {...props} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: props => <Icons name="person" {...props} />,
-        }}
-      />
-    </Tab.Navigator>
-  );
-};
+import StackNavigator from 'navigators/StackNavigator';
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
   const theme: Theme = useMemo(
     () => ({
       ...DefaultTheme,
@@ -72,10 +28,7 @@ const App = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
           <NavigationContainer theme={theme}>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="TabsStack" component={TabNavigator} />
-              <Stack.Screen name="Details" component={DetailsScreen} />
-            </Stack.Navigator>
+            <StackNavigator />
           </NavigationContainer>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
