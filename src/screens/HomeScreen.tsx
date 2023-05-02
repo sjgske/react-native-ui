@@ -352,8 +352,12 @@ const HomeScreen = ({ navigation }: TabsStackScreenProps<'Home'>) => {
         snapPoints={['80%']}
         index={0}
         backdropComponent={props => <CustomBackdrop {...props} />}
+        backgroundStyle={{
+          backgroundColor: colors.card,
+        }}
+        handleIndicatorStyle={{ backgroundColor: colors.primary }}
       >
-        <FilterView />
+        <FilterView colors={colors} />
       </BottomSheetModal>
     </ScrollView>
   );

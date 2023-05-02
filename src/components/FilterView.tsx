@@ -58,10 +58,9 @@ const SLEEVES = [
   },
 ];
 
-const FilterView = () => {
+const FilterView = ({ colors }: { colors: any }) => {
   const [startPrice, setStartPrice] = useState(50);
   const [endPrice, setEndPrice] = useState(250);
-  const { colors } = useTheme();
   const insets = useSafeAreaInsets();
   return (
     <View style={{ flex: 1 }}>
@@ -75,7 +74,14 @@ const FilterView = () => {
             alignItems: 'center',
           }}
         >
-          <Text style={{ flex: 1, fontSize: 20, fontWeight: '700' }}>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: 20,
+              fontWeight: '700',
+              color: colors.text,
+            }}
+          >
             Filters
           </Text>
           <TouchableOpacity>

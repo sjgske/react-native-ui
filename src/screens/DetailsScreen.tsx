@@ -95,7 +95,7 @@ const DetailsScreen = ({
 
       <BottomSheet
         detached
-        snapPoints={[64, 450]}
+        snapPoints={[64, 530]}
         index={0}
         style={{ marginHorizontal: 24 }}
         backgroundStyle={{
@@ -104,7 +104,7 @@ const DetailsScreen = ({
         }}
         bottomInset={insets.bottom + 20}
       >
-        <View style={{ padding: 16, gap: 20, flex: 1 }}>
+        <View style={{ padding: 20, gap: 24, flex: 1 }}>
           <Text
             style={{
               fontSize: 20,
