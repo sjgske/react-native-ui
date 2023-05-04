@@ -3,8 +3,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import HomeScreen from 'screens/HomeScreen';
-import CartScreen from 'screens/CartScreen';
-import PaymentScreen from 'screens/PaymentScreen';
+import EmptyScreen from 'screens/EmptyScreen';
 import ProfileScreen from 'screens/ProfileScreen';
 import CustomBottomTabs from 'components/CustomBottomTabs';
 import Icons from '@expo/vector-icons/MaterialIcons';
@@ -38,14 +37,14 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={CartScreen}
+        component={EmptyScreen}
         options={{
           tabBarIcon: props => <Icons name="shopping-cart" {...props} />,
         }}
       />
       <Tab.Screen
         name="Payment"
-        component={PaymentScreen}
+        component={EmptyScreen}
         options={{
           tabBarIcon: props => (
             <Icons name="account-balance-wallet" {...props} />
